@@ -1,0 +1,35 @@
+
+
+.pokemons-wrapper{
+    margin-top:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:15px;
+    margin-bottom:30px;
+
+   
+}
+
+.container{
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+    align-items:center;
+}
+
+button{
+    height:40px;
+    width:80px;
+    margin-left:10px;
+    border:none;
+    padding: 0px 20px;
+    border-radius:40%
+    
+}
+.actions{
+    
+    position:fixed;
+    bottom:8px;
+}

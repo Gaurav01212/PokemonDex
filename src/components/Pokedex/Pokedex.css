@@ -1,0 +1,30 @@
+
+
+.pokedex-container{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+}
+
+h1{
+    text-align: center;
+    text-transform:uppercase;
+    letter-spacing: 24px;
+    color:green;
+}
+
+input{
+    padding:20px;
+    width:80%;
+    margin:0px auto;
+    letter-spacing:0.2rem;
+    font-size:0.8rem;
+    color:green;
+    border:3px solid brown;
+    border-radius:10%;
+    border-left:none;
+    border-right:none;
+    text-transform:uppercase;
+}
+

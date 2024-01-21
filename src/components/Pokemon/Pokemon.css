@@ -1,0 +1,30 @@
+.pokemon-wrapper {
+    height: 180px;
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: skyblue; */
+    border-radius: 10%;
+    transition: background-color 1.3s ease; 
+ }
+ 
+ #img {
+     height: 70%;
+     width: 70%;
+ }
+ 
+ .name {
+     font-size: 0.8rem;
+     letter-spacing: 3px;
+     text-transform:uppercase;
+ }
+ 
+ .pokemon-wrapper:hover {
+     background-color: green;
+     color:white;
+ }
+ 
+ .pokemon-wrapper:hover>img{
+    transform: scale(1.6);
+ }
