@@ -1,0 +1,36 @@
+
+
+.details{
+    height:600px;
+    width:400px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    flex-direction:column;
+    margin:0px auto;
+
+}
+
+ul{
+    list-style-type:none;
+}
+
+li{
+    margin-top:3px;
+    font-size:2rem;
+}
+
+#img{
+    height:60%;
+    width:80%;
+}
+span{
+    color:#7c91a5;
+    text-transform:uppercase;
+    letter-spacing:3px;
+}
+
+h1>span{
+    color:#febe28;
+}

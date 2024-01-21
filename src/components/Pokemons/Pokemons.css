@@ -33,3 +33,15 @@ button{
     position:fixed;
     bottom:8px;
 }
+
+.pokemon-link{
+    text-decoration: none;
+    color:black;
+}
+
+.pokemon-wrapper:visited {
+   
+    color:red;
+    background-color: lightgray;
+  }
+  

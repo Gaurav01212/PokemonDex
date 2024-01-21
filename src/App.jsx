@@ -1,4 +1,6 @@
 import Pokedex from "./components/Pokedex/Pokedex"
+import CustomRoutes from './routes/CustomRoutes.jsx'
+
 
 function App() {
  
@@ -8,7 +10,7 @@ function App() {
 
  
   return (
-    <Pokedex/>
+    <CustomRoutes/>
   )
 }
 
