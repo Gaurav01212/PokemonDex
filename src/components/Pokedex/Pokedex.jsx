@@ -6,13 +6,13 @@ import SearchPokemon from '../SearchPokemon/SearchPokemon';
 
 function Pokedex(){
 
-    const[searchRes,setSearchRes]=useState("");
+    
     const[searchVal,setSearchVal]=useState("");
     const[isLoading,setIsLoading]=useState(true);
 
     const setSearch=(value)=>{
 
-        setSearchVal(value);
+        setSearchVal(value.toLowerCase());
         console.log(value)
 
     }
