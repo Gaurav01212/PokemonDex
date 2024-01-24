@@ -31,8 +31,10 @@ function SearchPokemon({ name1 }) {
   return (
     <div>
 
-      { (!searchData)?<div className="not-found-text">Not Found.....</div>:
-          
+      { (!searchData)?<div className="not-found-text">{name1}</div>:
+       
+       
+
         <PokemonDetails searchId={searchData.id}/>
      
       }
