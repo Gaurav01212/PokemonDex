@@ -2,51 +2,55 @@ import { useEffect, useState } from "react";
 import Pokemon from '../Pokemon/Pokemon.jsx'
 import './Pokemons.css'
 
-function Pokemons(){
-
-    const [pokemonsRes, setPokemonsRes] = useState([]);
-    const [currUrl, setCurrUrl] = useState('https://pokeapi.co/api/v2/pokemon?limit=50&offset=0');
-    const [nextUrl, setNextUrl] = useState('');
-    const [prevUrl, setPrevUrl] = useState('');
-    const [isLoading, setIsLoading] = useState(true);
+function Pokemons() {
+    const [stateList, setStateList] = useState({
+        pokemonsRes: [],
+        currUrl: 'https://pokeapi.co/api/v2/pokemon?limit=50&offset=0',
+        nextUrl: '',
+        prevUrl: '',
+        isLoading: true
+    });
 
     const downLoadData = async () => {
         try {
-            setIsLoading(true);
 
-            const pokemons = await fetch(currUrl);
+            const newObj={...stateList,isLoading:true}
+            setStateList(newObj);
+
+            const pokemons = await fetch(stateList.currUrl);
             const pokemonsToJson = await pokemons.json();
 
-            setNextUrl(pokemonsToJson.next);
-            setPrevUrl(pokemonsToJson.previous);
-            setPokemonsRes([...pokemonsToJson.results]);
+
+            const updates={...setStateList,nextUrl:pokemonsToJson.next,prevUrl:pokemonsToJson.previous,pokemonsRes: pokemonsToJson}
+
+            setStateList(updates);
         } catch (error) {
             console.error("Error fetching data:", error);
         } finally {
-            setIsLoading(false);
+            setStateList(prevState => ({ ...prevState, isLoading: false }));
         }
     }
-    
+
     const changeCurrUrl = (url) => {
-        setCurrUrl(url);
+        setStateList(prevState => ({ ...prevState, currUrl: url }));
     }
-   
+
     useEffect(() => {
         downLoadData();
-    }, [currUrl])
+    }, [stateList.currUrl])
 
     return (
         <>
-            {(isLoading) ?
+            {(stateList.isLoading) ?
                 <h1>Loading....</h1>
                 :
                 <div className="container">
                     <div className="pokemons-wrapper">
-                        {pokemonsRes.map((elem, index) => <Pokemon key={index} url={elem.url} />)}
+                        {(stateList.pokemonsRes.results) ? stateList.pokemonsRes.results.map((elem, index) => <Pokemon key={index} url={elem.url} />) : ""}
                     </div>
                     <div className="actions">
-                        <button disabled={(!prevUrl)} onClick={() => setCurrUrl(prevUrl)}>Prev</button>
-                        <button disabled={(!nextUrl)} onClick={() => setCurrUrl(nextUrl)}>Next</button>
+                        <button disabled={!stateList.prevUrl} onClick={() => changeCurrUrl(stateList.prevUrl)}>Prev</button>
+                        <button disabled={!stateList.nextUrl} onClick={() => changeCurrUrl(stateList.nextUrl)}>Next</button>
                     </div>
                 </div>
             }

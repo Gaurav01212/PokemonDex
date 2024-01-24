@@ -4,11 +4,13 @@ import { useParams } from "react-router-dom";
 import './PokemonDetails.css';
 
 
-function PokemonDetails(){
+function PokemonDetails({searchId}){
 
     const[p,setPokemonDetail]=useState({});
 
-    const {id}=useParams();
+    let {id}=useParams();
+
+    id=(searchId)?searchId:id;
     console.log(id);
 
     const downloadDetails=async()=>{
@@ -35,6 +37,7 @@ function PokemonDetails(){
 
     useEffect(()=>{
         downloadDetails();
+        console.log(searchId)
      },[])
 
 

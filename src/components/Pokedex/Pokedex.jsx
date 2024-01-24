@@ -1,8 +1,21 @@
 import './Pokedex.css'
 
 import Pokemons from '../Pokemons/Pokemons';
+import { useState } from 'react';
+import SearchPokemon from '../SearchPokemon/SearchPokemon';
 
 function Pokedex(){
+
+    const[searchRes,setSearchRes]=useState("");
+    const[searchVal,setSearchVal]=useState("");
+    const[isLoading,setIsLoading]=useState(true);
+
+    const setSearch=(value)=>{
+
+        setSearchVal(value);
+        console.log(value)
+
+    }
 
 
     return(
@@ -10,14 +23,18 @@ function Pokedex(){
         <>
          <div className='pokedex-container'>
             <h1>Pokedex</h1>
-        <input type="text" placeholder="Enter Pokemon name...."/>
+        <input type="text" value={searchVal} onChange={(e)=>{setSearch(e.target.value)}} placeholder="Enter Pokemon name...."/>
     
         </div>
 
-        <div className="pokemons-wrapper">
+
+{ (searchVal)?<SearchPokemon name1={searchVal}/>:<div className="pokemons-wrapper">
         <Pokemons/>
         </div>
+ }
+ 
 
+        
         
         </>
 
