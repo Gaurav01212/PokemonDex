@@ -4,6 +4,11 @@ import "./SearchPokemon.css"
 
 function SearchPokemon({ name1 }) {
   const [searchData, setSearchData] = useState(null);
+  const [isLoading,setIsLoading]=useState(true);
+
+  setTimeout(()=>{
+    setIsLoading(false);
+  },2000);
 
   const downLoadData = async () => {
     console.log(name1);
@@ -31,7 +36,7 @@ function SearchPokemon({ name1 }) {
   return (
     <div>
 
-      { (!searchData)?<div className="loading"></div>:
+      { (!searchData)?(isLoading)?<div className="loading"></div>:<h1>Dhang se Search karo Bhai !!!</h1>:
        
        
 
